@@ -1,0 +1,259 @@
+<!-- 91APP Inc.遊戲產生器91APP All rights reserved. -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=on, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>test03</title>
+    <meta name="keywords" content="test03" />
+    <meta name="description" content="https://www.91app.com/" />
+    <meta property="og:title" content="test03" />
+    <meta property="og:description" content="https://www.91app.com/" />
+    <meta property="og:image" content="//91app-game.com/content/games/03/assets/fb_share.jpg" />
+
+    <link rel="stylesheet" href="style/style.css?V001">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js?V003"></script>
+    <script src="js/jquery.easing.js"></script>
+    <script src="js/jquery.cookie.js?V001"></script>
+    <script src="js/moment.js?V001"></script>
+    <script src="js/TweenMax.min.js"></script>
+    <script src="js/SlotMachine.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-33795333-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'UA-33795333-1');
+        var _slotMachine;
+        $(document).ready(function() {
+            // console.log("fafaf");
+            // TweenMax.ticker.fps(15);
+
+            $(".game_btn").click(function() {
+                _slotMachine.start(7)
+            })
+
+            $(".game_btn").mousedown(function() {
+                $(".btn_img").attr('src', 'assets/game_btn_start.png?')
+            });
+            $(".game_btn").mouseup(function() {
+                $(".btn_img").attr('src', 'assets/game_btn.png')
+            });
+
+        });
+
+        jQuery(window).load(function() { 
+            var img_height = $('.gift1').children()[0].height
+            _slotMachine = new SlotMachine($('.game_content .s-l ul'), {
+                disH:img_height,
+                callback: function() {
+                    // console.log("Game End");
+                    setTimeout(function(){ alert("Game End"); }, 1000);
+                }
+            });
+        })
+    </script>
+
+</head>
+
+<body>
+    <!-- 最外層 -->
+    <div class="rwd_outer">
+        <!-- 主視覺區 -->
+        <div class="title_outer">
+            <div><img src="assets/title.png" alt="">
+            </div>
+            <div class="mobile"><img src="assets/title_small.png" alt="">
+            </div>
+        </div>
+        <!-- 遊戲區 -->
+        <div class="game_outer">
+            <div class="game_box" id="winwinwin2"></div>
+            <div class="game_content" id="sss">
+                <div class="ball">
+                    <img class="ball1" src="assets/ball1.png" alt="">
+                    <img class="ball2" src="assets/ball2.png" alt="">
+                    <img class="ball3" src="assets/ball3.png" alt="">
+                    <img class="ball4" src="assets/ball4.png" alt="">
+                    <img class="ball5" src="assets/ball5.png" alt="">
+                    <img class="ball6" src="assets/ball6.png" alt="">
+                    <img class="ball7" src="assets/ball7.png" alt="">
+                    <img class="ball8" src="assets/ball8.png" alt="">
+                </div>
+                <div class="topBox"></div>
+                <!-- <div class="slot-list slot-list1 s-l">
+                    <ul>
+                        <li class="gift1"><img src="assets/A.png" /></li>
+                        <li class="gift2"><img src="assets/B.png" /></li>
+                        <li class="gift3"><img src="assets/C.png" /></li>
+                        <li class="gift4"><img src="assets/D.png" /></li>
+                        <li class="gift5"><img src="assets/E.png" /></li>
+                        <li class="gift6"><img src="assets/F.png" /></li>
+                        <li class="gift7"><img src="assets/G.png" /></li>
+                        <li class="gift8"><img src="assets/H.png" /></li>
+                        <li class="gift9"><img src="assets/I.png" /></li>
+                    </ul>
+                </div>
+                <div class="slot-list slot-list2 s-l">
+                    <ul>
+                        <li class="gift1"><img src="assets/A.png" /></li>
+                        <li class="gift2"><img src="assets/B.png" /></li>
+                        <li class="gift3"><img src="assets/C.png" /></li>
+                        <li class="gift4"><img src="assets/D.png" /></li>
+                        <li class="gift5"><img src="assets/E.png" /></li>
+                        <li class="gift6"><img src="assets/F.png" /></li>
+                        <li class="gift7"><img src="assets/G.png" /></li>
+                        <li class="gift8"><img src="assets/H.png" /></li>
+                        <li class="gift9"><img src="assets/I.png" /></li>
+                    </ul>
+                </div>
+                <div class="slot-list slot-list3 s-l">
+                    <ul>
+                        <li class="gift1"><img src="assets/A.png" /></li>
+                        <li class="gift2"><img src="assets/B.png" /></li>
+                        <li class="gift3"><img src="assets/C.png" /></li>
+                        <li class="gift4"><img src="assets/D.png" /></li>
+                        <li class="gift5"><img src="assets/E.png" /></li>
+                        <li class="gift6"><img src="assets/F.png" /></li>
+                        <li class="gift7"><img src="assets/G.png" /></li>
+                        <li class="gift8"><img src="assets/H.png" /></li>
+                        <li class="gift9"><img src="assets/I.png" /></li>
+                    </ul>
+                </div> -->
+            </div>
+            <div class="game_btn">
+                <img class="btn_img" src="assets/game_btn.png" alt="">
+            </div>
+        </div>
+        <!-- 獎項彈跳視窗區_序號式 -->
+        <div class="prize_outer prize_num">
+            <ul>
+                <li>
+                    <div>
+                        <p>恭喜獲得</p>
+                        <b class="gift_title">獎項</b>
+                        <span class="gift_code" id="copy_txta">123456789</span>
+                        <a href="javascript:void(0);" class="copybtn" name="copy_txta">複製序號</a>
+                        <div><a class="gift_link" href="#">前往領取</a><a href="#">再玩一次</a></div>
+                        <p class="playcount"></p>
+                    </div>
+                    <i><a href="#"><img src="assets/close.png" alt=""></a></i>
+                </li>
+            </ul>
+        </div>
+        <!-- 獎項彈跳視窗區_連結式 -->
+        <!-- <div class="prize_outer prize_link">
+			<ul>
+				<li>
+					<div>
+						<p>恭喜獲得<br><b class="gift_title">獎項</b></p>
+						<div><a class="gift_link" href="#">前往領取</a><a href="index.html">再玩一次</a></div>
+						<p class="playcount"></p>
+					</div>
+					<i><a href="#"><img src="assets/close.png" alt=""></a></i>
+				</li>
+			</ul>
+		</div> -->
+        <!-- 獎項彈跳視窗區_銘謝惠顧 -->
+        <!-- <div class="prize_outer prize_none">
+			<ul>
+				<li>
+					<div>
+						<p>再接再厲<br><b>銘謝惠顧</b></p>
+						<div><a href="#" style="display: none;"></a><a href="#">再玩一次</a></div>
+						<p class="playcount"></p>
+					</div>
+					<i><a href="#"><img src="assets/close.png" alt=""></a></i>
+				</li>
+			</ul>
+		</div> -->
+        <!-- 不可玩彈跳視窗區_今日已玩三次 -->
+        <div class="prize_outer prize_pop2">
+            <ul>
+                <li>
+                    <div>
+                        <p><b class="today_played">您已經玩超過三次，明天請再來玩</b></p>
+                        <a href="https://www.91app.com/">點我看更多好康優惠</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!-- 不可玩彈跳視窗區_活動結束 -->
+        <!-- <div class="prize_outer prize_pop1">
+			<ul>
+				<li>
+					<div>
+						<p>活動結束<br><b>下次請早喔</b></p>
+						<a href="https://www.91app.com/">回首頁</a>
+					</div>					
+				</li>
+			</ul>			
+		</div> -->
+
+        <!-- Popup -->
+        <div class="copyouter">
+            <div class="copynow">已複製序號</div>
+        </div>
+        <!-- / Popup -->
+
+        <!-- social media區 -->
+        <div class="social_outer">
+            <div>
+                <a href="#" class="share_fb"><img src="assets/FB.png" alt="">
+                </a>
+            </div>
+            <div>
+                <a href="#" class="share_line"><img src="assets/LINE.png" alt="">
+                </a>
+            </div>
+        </div>
+        <!-- 遊戲說明文區_圖片顯示(如不需要 請整區拔掉) -->
+        <div class="info1_outer">
+            <div><img src="assets/bn01.png" alt="">
+            </div>
+        </div>
+        <!-- 遊戲說明文區_文字顯示 -->
+        <div class="info2_outer">
+            <p><b>遊戲說明</b></p>
+            <p>
+                <p>
+                    活動說明 :<br> 1. 活動時間:10/3 10:00 ~ 10/12 15:00<br> 2. 每個會員帳號每日免費限玩3次遊戲(從每日00:00起算)。 <br> 3. 此遊戲的「獎項」為「折價券」、「商品優惠折扣」。 <br> 4. 按下「START」即開始抽獎，在遊戲尚未結束前請勿關閉網頁或APP，避免將導致無法抽獎。 <br> 5. 折價券：數量有限領完為止，抽到請立即領取，如未領取即當下放棄領獎資格。 <br> 6. 折扣商品：數量有限售完為止，抽到請立即下單購買，如未下單即當下放棄領獎資格。
+                    <br> 7. 本活動因故無法進行時，主辦單位保留對活動網站、活動規則等的修改權利，修改後不另行通知。
+                </p>
+            </p>
+        </div>
+        <!-- 獎項說明文區 -->
+        <div class="info3_outer">
+            <p><b>獎項說明</b></p>
+            <p>
+                <p>
+                    折價券使用說明 :<br> 1. 折價券最多只能折抵該次購買總金額的5%。<br> 2. 折價券僅能使用一次且不找零，一經使用無法恢復。<br> 3. 使用折價券的訂單如取消或退貨，折價券將自動失效不會歸還。<br> 4. 折價券有使用效期，逾期後則無法使用，且無法恢復。<br> 5. 折價券不可折抵運費。<br> 6. 折價券可與商店其他折扣活動併用。<br> 7. 每次結帳，只能使用一張折價券。<br> 8. 折價券使用方式以商店為主。
+                </p>
+            </p>
+        </div>
+        <!-- banner區 -->
+        <div class="banner_outer">
+            <div><img src="assets/bn02.png" alt="">
+            </div>
+            <div><img src="assets/bn03.png" alt="">
+            </div>
+            <div><img src="assets/bn04.png" alt="">
+            </div>
+        </div>
+        <!-- APP下載區 -->
+        <div class="app_outer">
+            <div><img src="assets/appstore.png" alt="">
+            </div>
+            <div><img src="assets/googleplay.png" alt="">
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
