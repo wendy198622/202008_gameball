@@ -136,6 +136,26 @@ body {
     display: inline-block;
 }
 
+.game_outer .game_content .ballfalling {
+    width: 141px;
+    height: 14px;
+    display: block;
+    position: absolute;
+    z-index: 3;
+    top: 27%;
+    left: 12%;
+    -webkit-animation: ballfalling 1s linear forwards;
+    animation: ballfalling 1s linear forwards;
+}
+.game_outer .game_content .ballfalling img{
+    width: auto;
+    max-width: 141px;
+    position: absolute;
+    z-index: 5;
+    top: 0;
+    left: 0;
+    transform: scale(0.5);
+}
 .game_outer .game_btn {
     width: 29%;
     height: 30%;
@@ -148,7 +168,26 @@ body {
     overflow: hidden;
 }
 
-
+.ballmoving{
+    width: 170px;
+    height: 170px;
+    position: fixed;
+    z-index: 20;
+    bottom: 0;
+    left: 0;
+    top: auto;
+    right: auto;
+    margin: auto;
+    -webkit-animation: ballmoving .3s linear forwards;
+    animation: ballmoving .3s linear forwards;
+}
+.ballmoving .ballgift{
+    width: 170px;
+    height: 170px;
+    padding-bottom: 0;
+}
+.ballmoving .ballgift img{
+}
 /* .game_outer .game_btn:hover{
 	padding-bottom: 17.5%;
 	top: 17%;
@@ -191,9 +230,36 @@ body {
     background: rgba(0, 0, 0, .5);
     z-index: 999;
 }
+.rwd_outer .prize_outer .balltop{
+    width: 154px;
+    height: 92px;
+    position: absolute;
+    z-index: 21;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% -50%);
+    margin-top: -80px;
+    margin-left: -80px;
+    -webkit-animation: balltop .6s linear forwards;
+    animation: balltop .6s linear forwards;
+}
+.rwd_outer .prize_outer .ballbottom{
+    width: 157px;
+    height: 100px;
+    position: absolute;
+    z-index: 20;
+    bottom: 50%;
+    left: 50%;
+    transform: translate(-50% 50%);
+    margin-left: -80px;
+    transform-origin: 50% 100%;
+    -webkit-animation: ballbottom .6s linear forwards;
+    animation: ballbottom .6s linear forwards;
+}
 
 .rwd_outer .prize_outer ul {
     position: absolute;
+    z-index: 21;
     width: 792px;
     height: 520px;
     /* width: 100vw;
@@ -205,6 +271,10 @@ body {
     margin: auto;
     text-align: center;
     list-style: none;
+    opacity: 0;
+    overflow: hidden;
+    -webkit-animation: ballaward .6s linear forwards;
+    animation: ballaward .6s linear forwards;
 }
 
 .rwd_outer .prize_outer ul li {

@@ -1,0 +1,104 @@
+.game_outer .game_content .topBox .ballfalling {
+    /* animation: ballfalling 1s linear; */
+}
+
+/* 關鍵影格(@keyframe) */
+
+@keyframes ballfalling {
+    0% {
+        top: 27%;
+        left: 12%;
+        opacity: 0;
+    }
+    20% {  
+        top: 27%;
+        left: 4%;
+        opacity: 1;   
+    }
+    60% {
+        top: 62%;
+        left: 4%; 
+    }
+    80% {
+        top: 62%;
+        left: 22.5%;  
+        transform: scale(1);
+    }
+    100%{
+        top: 78.2%;
+        left: 22.5%; 
+        transform: scale(2);
+    }
+}
+@keyframes ballmoving{
+    0%{
+        bottom: 0;
+        left: 0;
+
+    }
+    99%{
+        left: 50%;
+        bottom: 50%;
+        margin-left: -85px;
+        margin-bottom: -85px;
+        transform: scale(1);
+    }
+    100%{
+        left: 50%;
+        bottom: 50%;
+        margin-left: -85px;
+        margin-bottom: -85px;
+        transform: scale(0);
+    }
+}
+@keyframes balltop{
+    0%{
+        top: 50%;
+        height: 92px;
+
+    }
+    75%{
+        top: 30%;
+        height: 0;
+        transform: scale(1);
+    }
+    100%{
+        top: 30%;
+        height: 0;
+        transform: scale(0);
+    }
+}
+@keyframes ballbottom{
+    0%{
+        top: 50%;
+        height: 100px;
+
+    }
+    75%{
+        top: 75%;
+        height: 0;
+        transform: scale(1);
+    }
+    100%{
+        top: 75%;
+        height: 0;
+        transform: scale(0);
+    }
+}
+@keyframes ballaward{
+    0%{
+        top: 0;
+        opacity: 1;
+        transform: scale(0);
+    }
+    90%{
+        top: -50;
+        opacity: 1;
+        transform: scale(1);
+    }
+    100%{
+        top: -50;
+        opacity: 1;
+        transform: scale(1);
+    }
+}

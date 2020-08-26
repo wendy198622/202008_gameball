@@ -13,12 +13,13 @@
     <meta property="og:image" content="//91app-game.com/content/games/03/assets/fb_share.jpg" />
 
     <link rel="stylesheet" href="style/style.css?V001">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js?V003"></script>
+    <link rel="stylesheet" href="style/ballanimation.css">
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js?V003"></script> -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="js/jquery.easing.js"></script>
     <script src="js/jquery.cookie.js?V001"></script>
     <script src="js/moment.js?V001"></script>
-    <script src="js/TweenMax.min.js"></script>
-    <script src="js/SlotMachine.js"></script>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-33795333-1"></script>
@@ -45,19 +46,18 @@
             $(".game_btn").mouseup(function() {
                 $(".btn_img").attr('src', 'assets/game_btn.png')
             });
-
         });
 
-        jQuery(window).load(function() { 
-            var img_height = $('.gift1').children()[0].height
-            _slotMachine = new SlotMachine($('.game_content .s-l ul'), {
-                disH:img_height,
-                callback: function() {
-                    // console.log("Game End");
-                    setTimeout(function(){ alert("Game End"); }, 1000);
-                }
-            });
-        })
+        // jQuery(window).load(function() { 
+        //     var img_height = $('.gift1').children()[0].height
+        //     _slotMachine = new SlotMachine($('.game_content .s-l ul'), {
+        //         disH:img_height,
+        //         callback: function() {
+        //             // console.log("Game End");
+        //             setTimeout(function(){ alert("Game End"); }, 1000);
+        //         }
+        //     });
+        // })
     </script>
 
 </head>
@@ -76,63 +76,42 @@
         <div class="game_outer">
             <div class="game_box" id="winwinwin2"></div>
             <div class="game_content" id="sss">
-                <div class="ball">
-                    <img class="ball1" src="assets/ball1.png" alt="">
-                    <img class="ball2" src="assets/ball2.png" alt="">
-                    <img class="ball3" src="assets/ball3.png" alt="">
-                    <img class="ball4" src="assets/ball4.png" alt="">
-                    <img class="ball5" src="assets/ball5.png" alt="">
-                    <img class="ball6" src="assets/ball6.png" alt="">
-                    <img class="ball7" src="assets/ball7.png" alt="">
-                    <img class="ball8" src="assets/ball8.png" alt="">
+                <canvas id="ballcanvas" class="ball" width="460px" height="460px">
+                </canvas>
+                <div class="topBox">
                 </div>
-                <div class="topBox"></div>
-                <!-- <div class="slot-list slot-list1 s-l">
-                    <ul>
-                        <li class="gift1"><img src="assets/A.png" /></li>
-                        <li class="gift2"><img src="assets/B.png" /></li>
-                        <li class="gift3"><img src="assets/C.png" /></li>
-                        <li class="gift4"><img src="assets/D.png" /></li>
-                        <li class="gift5"><img src="assets/E.png" /></li>
-                        <li class="gift6"><img src="assets/F.png" /></li>
-                        <li class="gift7"><img src="assets/G.png" /></li>
-                        <li class="gift8"><img src="assets/H.png" /></li>
-                        <li class="gift9"><img src="assets/I.png" /></li>
-                    </ul>
+                <div class="ballfalling">
+                    <img id="ball1" src="assets/ball1.png" alt="">
+                    <img id="ball2" src="assets/ball2.png" alt="">
+                    <img id="ball3" src="assets/ball3.png" alt="">
+                    <img id="ball4" src="assets/ball4.png" alt="">
+                    <img id="ball5" src="assets/ball5.png" alt="">
+                    <img id="ball6" src="assets/ball6.png" alt="">
+                    <img id="ball7" src="assets/ball7.png" alt="">
+                    <img id="ball8" src="assets/ball8.png" alt="">
                 </div>
-                <div class="slot-list slot-list2 s-l">
-                    <ul>
-                        <li class="gift1"><img src="assets/A.png" /></li>
-                        <li class="gift2"><img src="assets/B.png" /></li>
-                        <li class="gift3"><img src="assets/C.png" /></li>
-                        <li class="gift4"><img src="assets/D.png" /></li>
-                        <li class="gift5"><img src="assets/E.png" /></li>
-                        <li class="gift6"><img src="assets/F.png" /></li>
-                        <li class="gift7"><img src="assets/G.png" /></li>
-                        <li class="gift8"><img src="assets/H.png" /></li>
-                        <li class="gift9"><img src="assets/I.png" /></li>
-                    </ul>
-                </div>
-                <div class="slot-list slot-list3 s-l">
-                    <ul>
-                        <li class="gift1"><img src="assets/A.png" /></li>
-                        <li class="gift2"><img src="assets/B.png" /></li>
-                        <li class="gift3"><img src="assets/C.png" /></li>
-                        <li class="gift4"><img src="assets/D.png" /></li>
-                        <li class="gift5"><img src="assets/E.png" /></li>
-                        <li class="gift6"><img src="assets/F.png" /></li>
-                        <li class="gift7"><img src="assets/G.png" /></li>
-                        <li class="gift8"><img src="assets/H.png" /></li>
-                        <li class="gift9"><img src="assets/I.png" /></li>
-                    </ul>
-                </div> -->
             </div>
             <div class="game_btn">
                 <img class="btn_img" src="assets/game_btn.png" alt="">
             </div>
         </div>
+        
+        <div class="ballaward">
+            <div class="ballgift">
+                <img src="assets/win_ball.png" alt="">
+            </div>
+        </div>
         <!-- 獎項彈跳視窗區_序號式 -->
-        <div class="prize_outer prize_num">
+        <div class="prize_outer prize_num" style="display: block;">
+            
+            <div class="ballmoving">
+                <div class="ballgift">
+                    <img src="assets/win_ball.png" alt="">
+                </div>
+            </div>
+            <div class="balltop">
+                <img src="assets/ball_top.png" alt="">
+            </div>
             <ul>
                 <li>
                     <div>
@@ -146,6 +125,9 @@
                     <i><a href="#"><img src="assets/close.png" alt=""></a></i>
                 </li>
             </ul>
+            <div class="ballbottom">
+                <img src="assets/ball_down.png" alt="">
+            </div>
         </div>
         <!-- 獎項彈跳視窗區_連結式 -->
         <!-- <div class="prize_outer prize_link">
@@ -254,6 +236,10 @@
             </div>
         </div>
     </div>
+    
+    
+    <script src="js/gacha.js"></script>
+
 </body>
 
 </html>
