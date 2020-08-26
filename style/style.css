@@ -96,10 +96,10 @@ body {
     overflow: hidden;
     position: absolute;
 }
-.game_outer .game_content .ball{
-    width: 46%;
+.game_outer .game_content canvas{
+    /* width: 46%;
     height: 0;
-    padding-bottom: 46%;
+    padding-bottom: 46%; */
     position: absolute;
     overflow: hidden;
     position: absolute;
