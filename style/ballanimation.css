@@ -1,9 +1,30 @@
-.game_outer .game_content .topBox .ballfalling {
-    /* animation: ballfalling 1s linear; */
+/* 獎項掉落 */
+.start {
+    -webkit-animation: ballfalling 1s linear forwards;
+    animation: ballfalling 1s linear forwards;
 }
-
+/* 球滾到中間 */
+.rolling{
+    -webkit-animation: ballmoving 1s linear forwards;
+    animation: ballmoving 1s linear forwards;
+}
+/* 扭蛋上蓋 */
+.closetop{
+    /* display: block; */
+    -webkit-animation: balltop .6s linear forwards;
+    animation: balltop .6s linear forwards;
+}
+/* 扭蛋下蓋 */
+.closebottom{
+    -webkit-animation: ballbottom .6s linear forwards;
+    animation: ballbottom .6s linear forwards;
+}
+/* 獎項內容 */
+.open{
+    -webkit-animation: ballaward .6s linear forwards;
+    animation: ballaward .6s linear forwards;
+}
 /* 關鍵影格(@keyframe) */
-
 @keyframes ballfalling {
     0% {
         top: 27%;
@@ -21,41 +42,44 @@
     }
     80% {
         top: 62%;
-        left: 22.5%;  
+        left: 22.5%;
         transform: scale(1);
     }
     100%{
         top: 78.2%;
-        left: 22.5%; 
+        left: 22.5%;
         transform: scale(2);
     }
 }
+
 @keyframes ballmoving{
     0%{
-        bottom: 0;
-        left: 0;
-
+        bottom: 0%;
+        left: 20%;
+        /* right: -50%; */
+        margin-left: -85px;
+        margin-bottom: -85px;
     }
-    99%{
+    50%{
         left: 50%;
         bottom: 50%;
         margin-left: -85px;
         margin-bottom: -85px;
         transform: scale(1);
-    }
+    }    
     100%{
         left: 50%;
         bottom: 50%;
         margin-left: -85px;
         margin-bottom: -85px;
-        transform: scale(0);
+        transform: scale(1);
     }
 }
 @keyframes balltop{
     0%{
         top: 50%;
         height: 92px;
-
+        visibility: visible;
     }
     75%{
         top: 30%;
@@ -72,7 +96,7 @@
     0%{
         top: 50%;
         height: 100px;
-
+        visibility: visible;
     }
     75%{
         top: 75%;

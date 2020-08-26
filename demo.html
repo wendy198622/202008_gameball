@@ -4,7 +4,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=on, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=on, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>test03</title>
     <meta name="keywords" content="test03" />
     <meta name="description" content="https://www.91app.com/" />
@@ -12,7 +13,7 @@
     <meta property="og:description" content="https://www.91app.com/" />
     <meta property="og:image" content="//91app-game.com/content/games/03/assets/fb_share.jpg" />
 
-    <link rel="stylesheet" href="style/style.css?V001">
+    <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/ballanimation.css">
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js?V003"></script> -->
 
@@ -20,6 +21,7 @@
     <script src="js/jquery.easing.js"></script>
     <script src="js/jquery.cookie.js?V001"></script>
     <script src="js/moment.js?V001"></script>
+    <script src="js/gacha.js"></script>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-33795333-1"></script>
@@ -31,22 +33,37 @@
         }
         gtag('js', new Date());
         gtag('config', 'UA-33795333-1');
-        var _slotMachine;
-        $(document).ready(function() {
-            // console.log("fafaf");
-            // TweenMax.ticker.fps(15);
 
-            $(".game_btn").click(function() {
-                _slotMachine.start(7)
+        var ballIdList = ['ball1', 'ball2', 'ball3', 'ball4', 'ball5', 'ball6', 'ball7', 'ball8'];
+
+        $(document).ready(function () {
+            var gacha = new Gacha("ballcanvas", ballIdList);
+
+            $(".game_btn").click(function () {
+                gacha.startAndGetCacha(6, GachaGameEndCallback)
             })
 
-            $(".game_btn").mousedown(function() {
+            $(".game_btn").mousedown(function () {
                 $(".btn_img").attr('src', 'assets/game_btn_start.png?')
             });
-            $(".game_btn").mouseup(function() {
+
+            $(".game_btn").mouseup(function () {
                 $(".btn_img").attr('src', 'assets/game_btn.png')
             });
         });
+
+        function GachaGameEndCallback(ball) {
+            console.log("GachaGameEndCallback", ball)
+            $(".prize_outer.prize_num").css('display', 'block')
+            $(".ballmoving").addClass("rolling")
+            $(".ballmoving").bind("webkitAnimationEnd oAnimationEnd msAnimationEnd animationend", function (event) {
+                console.log("webkitAnimationEnd", ball)
+                $(".balltop").addClass("closetop")
+                $(".ballbottom").addClass("closebottom")
+                $("#content").addClass("open")
+                $('.ballmoving').unbind();
+            })
+        }
 
         // jQuery(window).load(function() { 
         //     var img_height = $('.gift1').children()[0].height
@@ -81,29 +98,29 @@
                 <div class="topBox">
                 </div>
                 <div class="ballfalling">
-                    <img id="ball1" src="assets/ball1.png" alt="">
-                    <img id="ball2" src="assets/ball2.png" alt="">
-                    <img id="ball3" src="assets/ball3.png" alt="">
-                    <img id="ball4" src="assets/ball4.png" alt="">
-                    <img id="ball5" src="assets/ball5.png" alt="">
-                    <img id="ball6" src="assets/ball6.png" alt="">
-                    <img id="ball7" src="assets/ball7.png" alt="">
-                    <img id="ball8" src="assets/ball8.png" alt="">
+                    <img id="ball1" src="assets/ball1.png" alt="" style="display: none;">
+                    <img id="ball2" src="assets/ball2.png" alt="" style="display: none;">
+                    <img id="ball3" src="assets/ball3.png" alt="" style="display: none;">
+                    <img id="ball4" src="assets/ball4.png" alt="" style="display: none;">
+                    <img id="ball5" src="assets/ball5.png" alt="" style="display: none;">
+                    <img id="ball6" src="assets/ball6.png" alt="" style="display: none;">
+                    <img id="ball7" src="assets/ball7.png" alt="" style="display: none;">
+                    <img id="ball8" src="assets/ball8.png" alt="" style="display: none;">
                 </div>
             </div>
             <div class="game_btn">
                 <img class="btn_img" src="assets/game_btn.png" alt="">
             </div>
         </div>
-        
-        <div class="ballaward">
+
+        <!-- <div class="ballaward">
             <div class="ballgift">
                 <img src="assets/win_ball.png" alt="">
             </div>
-        </div>
+        </div> -->
         <!-- 獎項彈跳視窗區_序號式 -->
-        <div class="prize_outer prize_num" style="display: block;">
-            
+        <div class="prize_outer prize_num">
+            <!-- style="display: block;"  -->
             <div class="ballmoving">
                 <div class="ballgift">
                     <img src="assets/win_ball.png" alt="">
@@ -112,7 +129,7 @@
             <div class="balltop">
                 <img src="assets/ball_top.png" alt="">
             </div>
-            <ul>
+            <ul id="content">
                 <li>
                     <div>
                         <p>恭喜獲得</p>
@@ -204,19 +221,23 @@
         <div class="info2_outer">
             <p><b>遊戲說明</b></p>
             <p>
-                <p>
-                    活動說明 :<br> 1. 活動時間:10/3 10:00 ~ 10/12 15:00<br> 2. 每個會員帳號每日免費限玩3次遊戲(從每日00:00起算)。 <br> 3. 此遊戲的「獎項」為「折價券」、「商品優惠折扣」。 <br> 4. 按下「START」即開始抽獎，在遊戲尚未結束前請勿關閉網頁或APP，避免將導致無法抽獎。 <br> 5. 折價券：數量有限領完為止，抽到請立即領取，如未領取即當下放棄領獎資格。 <br> 6. 折扣商品：數量有限售完為止，抽到請立即下單購買，如未下單即當下放棄領獎資格。
-                    <br> 7. 本活動因故無法進行時，主辦單位保留對活動網站、活動規則等的修改權利，修改後不另行通知。
-                </p>
+            <p>
+                活動說明 :<br> 1. 活動時間:10/3 10:00 ~ 10/12 15:00<br> 2. 每個會員帳號每日免費限玩3次遊戲(從每日00:00起算)。 <br> 3.
+                此遊戲的「獎項」為「折價券」、「商品優惠折扣」。 <br> 4. 按下「START」即開始抽獎，在遊戲尚未結束前請勿關閉網頁或APP，避免將導致無法抽獎。 <br> 5.
+                折價券：數量有限領完為止，抽到請立即領取，如未領取即當下放棄領獎資格。 <br> 6. 折扣商品：數量有限售完為止，抽到請立即下單購買，如未下單即當下放棄領獎資格。
+                <br> 7. 本活動因故無法進行時，主辦單位保留對活動網站、活動規則等的修改權利，修改後不另行通知。
+            </p>
             </p>
         </div>
         <!-- 獎項說明文區 -->
         <div class="info3_outer">
             <p><b>獎項說明</b></p>
             <p>
-                <p>
-                    折價券使用說明 :<br> 1. 折價券最多只能折抵該次購買總金額的5%。<br> 2. 折價券僅能使用一次且不找零，一經使用無法恢復。<br> 3. 使用折價券的訂單如取消或退貨，折價券將自動失效不會歸還。<br> 4. 折價券有使用效期，逾期後則無法使用，且無法恢復。<br> 5. 折價券不可折抵運費。<br> 6. 折價券可與商店其他折扣活動併用。<br> 7. 每次結帳，只能使用一張折價券。<br> 8. 折價券使用方式以商店為主。
-                </p>
+            <p>
+                折價券使用說明 :<br> 1. 折價券最多只能折抵該次購買總金額的5%。<br> 2. 折價券僅能使用一次且不找零，一經使用無法恢復。<br> 3.
+                使用折價券的訂單如取消或退貨，折價券將自動失效不會歸還。<br> 4. 折價券有使用效期，逾期後則無法使用，且無法恢復。<br> 5. 折價券不可折抵運費。<br> 6.
+                折價券可與商店其他折扣活動併用。<br> 7. 每次結帳，只能使用一張折價券。<br> 8. 折價券使用方式以商店為主。
+            </p>
             </p>
         </div>
         <!-- banner區 -->
@@ -236,9 +257,8 @@
             </div>
         </div>
     </div>
-    
-    
-    <script src="js/gacha.js"></script>
+
+
 
 </body>
 
