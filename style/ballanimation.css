@@ -5,8 +5,8 @@
 }
 /* 球滾到中間 */
 .rolling{
-    -webkit-animation: ballmoving 1.5s forwards cubic-bezier(.54,.75,0,1.18);
-    animation: ballmoving 1.5s forwards cubic-bezier(.54,.75,0,1.18);
+    -webkit-animation: ballmoving 1.5s forwards cubic-bezier(.17,.67,.53,1.26);
+    animation: ballmoving 1.5s forwards cubic-bezier(.17,.67,.53,1.26);
     
 }
 /* 扭蛋上蓋 */
@@ -60,19 +60,17 @@
         /* right: -50%; */
         margin-left: -85px;
         margin-bottom: -85px;
+        transform: rotateZ(-10deg);
     }
     60%{
+        transform: rotateZ(-10deg);
+    }
+    80%{
         left: 50%;
         bottom: 50%;
         margin-left: -85px;
         margin-bottom: -85px;
         transform: scale(1);
-        transform: rotateZ(0deg);
-    }
-    70%{
-        transform: rotateZ(-20deg);
-    }    
-    90%{
         transform: rotateZ(20deg);
     }
     100%{
@@ -81,7 +79,7 @@
         margin-left: -85px;
         margin-bottom: -85px;
         transform: scale(1);
-        transform: rotateZ(-20deg);
+        transform: rotateZ(0deg);
     }
 }
 @keyframes balltop{
