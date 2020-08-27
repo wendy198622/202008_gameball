@@ -47,12 +47,40 @@
         transform: scale(1);
     }
     100%{
-        top: 78.2%;
+        top: 80.2%;
         left: 22.5%;
         transform: scale(2);
     }
 }
 
+@media screen and (max-width: 640px) {
+    @keyframes ballfalling {
+        0% {
+            top: 27%;
+            left: 12%;
+            opacity: 0;
+        }
+        20% {  
+            top: 27%;
+            left: 0%;
+            opacity: 1;   
+        }
+        60% {
+            top: 52%;
+            left: 0%; 
+        }
+        80% {
+            top: 52%;
+            left: 19%;
+            transform: scale(1);
+        }
+        100%{
+            top: 79.2%;
+            left: 19%;
+            transform: scale(3);
+        }
+    }  
+}
 @keyframes ballmoving{
     0%{
         bottom: 0%;

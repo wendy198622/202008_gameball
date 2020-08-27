@@ -97,17 +97,12 @@ body {
     position: absolute;
 }
 .game_outer .game_content canvas{
-    /* width: 46%;
-    height: 0;
-    padding-bottom: 46%; */
     position: absolute;
     overflow: hidden;
-    position: absolute;
     top: 11%;
     left: 51%;
     transform: translateX(-50%);
     z-index: 5;
-    /* outline: 1px solid yellow; */
 }
 
 .game_outer .game_content .topBox{
@@ -125,7 +120,7 @@ body {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
-    opacity: .5;
+    /* opacity: .5; */
 
 }
 .game_outer .game_content .ball1, .game_outer .game_content .ball2, .game_outer .game_content .ball3, .game_outer .game_content .ball4, .game_outer .game_content .ball5{
@@ -139,7 +134,7 @@ body {
 
 .game_outer .game_content .ballfalling {
     width: 141px;
-    height: 14px;
+    height: 141px;
     display: block;
     position: absolute;
     z-index: 3;
@@ -706,6 +701,16 @@ body {
         background-size: cover;
         padding: 2% 2%;
     }
+
+    .game_outer .game_content canvas{
+        width: 48%;
+        position: absolute;
+        overflow: hidden;
+        top: 11%;
+        left: 51%;
+        transform: translateX(-50%);
+        z-index: 5;
+    }
     .game_outer .game_btn {
         left: 53%;
         top: 67%;
@@ -716,6 +721,26 @@ body {
         padding-bottom: 96%;
         top: 2%;
         left: 2%;
+    }
+    .game_outer .game_content .ballfalling {
+        width: calc(141/640*100%);
+        height: auto;
+        padding-bottom: calc(141/640*100%);
+        display: block;
+        position: absolute;
+        z-index: 3;
+        top: 27%;
+        left: 12%;
+    }
+    
+    .game_outer .game_content .ballfalling img{
+        width: 100%;
+        max-width: 141px;
+        position: absolute;
+        z-index: 5;
+        top: 0;
+        left: 0;
+        transform: scale(0.2);
     }
     /* .game_outer ul {
         width: 100%;
