@@ -15,7 +15,6 @@ class Gacha {
         // var that = this
         this.awardList = [];
         this.canvas.getContext('2d').clearRect(0, 0, this.canvas.width, this.canvas.height);
-        this.canvas.getContext('2d').fillRect(0,0,this.canvas.width,this.canvas.height)
         for (let i = 0; i < this.ballRes.length; i++) {
             var ball = document.getElementById(this.ballRes[i]);
             this.awardList[i] = new Ball(this.canvas, i, ball);
@@ -34,20 +33,14 @@ class Gacha {
         window.clearInterval(this.timer);
         this.timer = setInterval(function () {
             that.canvas.getContext('2d').clearRect(0, 0, that.canvas.width, that.canvas.height);
-            that.canvas.getContext('2d').fillRect(0,0,that.canvas.width,that.canvas.height)
             for (let i = 0; i < that.awardList.length; i++) {
                 that.awardList[i].run();
             }
         }, 10);
 
-        // that.canvas.getContext('2d').clearRect(0, 0, that.canvas.width, that.canvas.height);
-        // for (let i = 0; i < that.awardList.length; i++) {
-        //     that.awardList[i].run();
-        // }
-
-        // setTimeout(() => {
-        //     that.stop(ball)
-        // }, 10000)
+        setTimeout(() => {
+            that.stop(ball)
+        }, 3000)
 
         $('.ballfalling').bind("webkitAnimationEnd oAnimationEnd msAnimationEnd animationend", function (event) {
             callback(ball)

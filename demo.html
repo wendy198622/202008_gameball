@@ -39,7 +39,10 @@
         $(document).ready(function () {
 
             $(".game_btn").click(function () {
-                gacha.startAndGetCacha(6, GachaGameEndCallback)
+                gacha.startAndGetCacha(6, onGameEndCallback)
+                $('html, body').animate({
+                    scrollTop: $('.game_outer').offset().top
+                }, 500);
             })
 
             $(".game_btn").mousedown(function () {
@@ -51,20 +54,20 @@
             });
         });
 
-        window.onload = function() {
+        window.onload = function () {
             gacha = new Gacha("ballcanvas", ballIdList);
         };
 
-        function GachaGameEndCallback(ball) {
+        function onGameEndCallback(ball) {
             console.log("GachaGameEndCallback", ball)
             $(".prize_outer.prize_num").css('display', 'block')
             $(".ballmoving").addClass("rolling")
             $(".ballmoving").bind("webkitAnimationEnd oAnimationEnd msAnimationEnd animationend", function (event) {
-                console.log("webkitAnimationEnd", ball)
+                $('.ballmoving').unbind();
+                $(".ballmoving").hide()
                 $(".balltop").addClass("closetop")
                 $(".ballbottom").addClass("closebottom")
                 $("#content").addClass("open")
-                $('.ballmoving').unbind();
             })
         }
 

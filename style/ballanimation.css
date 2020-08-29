@@ -12,18 +12,18 @@
 /* 扭蛋上蓋 */
 .closetop{
     /* display: block; */
-    -webkit-animation: balltop .6s linear forwards;
-    animation: balltop .6s linear forwards;
+    -webkit-animation: balltop 0.4s linear forwards;
+    animation: balltop 0.4s linear forwards;
 }
 /* 扭蛋下蓋 */
 .closebottom{
-    -webkit-animation: ballbottom .6s linear forwards;
-    animation: ballbottom .6s linear forwards;
+    -webkit-animation: ballbottom 0.4s linear forwards;
+    animation: ballbottom 0.4s linear forwards;
 }
 /* 獎項內容 */
 .open{
-    -webkit-animation: ballaward .4s .3s linear forwards;
-    animation: ballaward .4s .3s linear forwards;
+    -webkit-animation: ballaward .4s .1s linear forwards;
+    animation: ballaward .4s .1s linear forwards;
 }
 /* 關鍵影格(@keyframe) */
 @keyframes ballfalling {
