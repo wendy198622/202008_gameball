@@ -227,7 +227,7 @@ body {
     width: 154px;
     height: 92px;
     position: absolute;
-    z-index: 999;
+    z-index: 1000;
     top: 50%;
     left: 50%;
     transform: translate(-50% -50%);
@@ -239,7 +239,7 @@ body {
     width: 157px;
     height: 100px;
     position: absolute;
-    z-index: 999;
+    z-index: 998;
     bottom: 50%;
     left: 50%;
     transform: translate(-50% 50%);
@@ -651,8 +651,8 @@ body {
         font-family: "Century Gothic", "Helvetica Neue", "Open Sans", "Heiti TC", "Microsoft JhengHei", 'Microsoft JhengHei UI Regular', '微軟正黑體 Light', '微軟正黑體', sans-serif;
         color: #333;
         background-image: url("../assets/bg_mobile.jpg");
-        -webkit-background-size: contain;
-        background-size: contain;
+        -webkit-background-size: cover;
+        background-size: cover;
     }
     /* 最外層設定 */
     .rwd_outer {

@@ -12,18 +12,18 @@
 /* 扭蛋上蓋 */
 .closetop{
     /* display: block; */
-    -webkit-animation: balltop .4s linear forwards;
-    animation: balltop .4s linear forwards;
+    -webkit-animation: balltop .6s linear forwards;
+    animation: balltop .6s linear forwards;
 }
 /* 扭蛋下蓋 */
 .closebottom{
-    -webkit-animation: ballbottom .4s linear forwards;
-    animation: ballbottom .4s linear forwards;
+    -webkit-animation: ballbottom .6s linear forwards;
+    animation: ballbottom .6s linear forwards;
 }
 /* 獎項內容 */
 .open{
-    -webkit-animation: ballaward .5s linear forwards;
-    animation: ballaward .5s linear forwards;
+    -webkit-animation: ballaward .4s .3s linear forwards;
+    animation: ballaward .4s .3s linear forwards;
 }
 /* 關鍵影格(@keyframe) */
 @keyframes ballfalling {
@@ -113,16 +113,21 @@
 @keyframes balltop{
     0%{
         top: 48%;
-        height: 92px;
+        /* height: 92px; */
         visibility: visible;
         transform: scale(1);
     }
-    100%{
-        top: 33%;
-        height: 0;
+    90%{
+        top: 30%;
+        /* height: 0; */
         transform: scale(1);
-        /* visibility:hidden; */
-        transition: ease-in-out
+        transition: ease-in-out;
+    }
+    100%{
+        top: 30%;
+        /* height: 0; */
+        transform: scale(0);
+        transition: ease-in-out;
     }
 }
 @keyframes ballbottom{
@@ -132,10 +137,15 @@
         transform: scale(1);
         visibility: visible;
     }
-    100%{
-        top: 66%;
+    99%{
+        top: 70%;
         transform: scale(1);
-        transition: ease-in-out
+        transition: ease-in-out;
+    }
+    100%{
+        top: 70%;
+        transform: scale(0);
+        transition: ease-in-out;
     }
 }
 @keyframes ballaward{
