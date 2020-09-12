@@ -34,12 +34,16 @@
         gtag('js', new Date());
         gtag('config', 'UA-33795333-1');
 
-        var ballIdList = ['ball1', 'ball2', 'ball3', 'ball4', 'ball5', 'ball6', 'ball7', 'ball8'];
+
+        //需要幾個球自行添加,獎項球建議不要重複
+        var ballList = ['other1', 'other2', 'other3', 'other4', 'other5','other1', 'other2', 'other3', 'other4', 'other5','other1', 'other2', 'other3', 'other4', 'other5', "gift", "coupon", "money"];
         var gacha;
         $(document).ready(function () {
 
             $(".game_btn").click(function () {
-                gacha.startAndGetCacha(6, onGameEndCallback)
+
+                //想要搖出哪一個獎項就傳入該獎項的名稱
+                gacha.startAndGetCacha("gift", onGameEndCallback)
                 $('html, body').animate({
                     scrollTop: $('.game_outer').offset().top
                 }, 500);
@@ -55,7 +59,7 @@
         });
 
         window.onload = function () {
-            gacha = new Gacha("ballcanvas", ballIdList);
+            gacha = new Gacha("ballcanvas", ballList);
         };
 
         function onGameEndCallback(ball) {
@@ -68,6 +72,8 @@
                 $(".balltop").addClass("closetop")
                 $(".ballbottom").addClass("closebottom")
                 $("#content").addClass("open")
+                
+                gacha.reset();
             })
         }
 

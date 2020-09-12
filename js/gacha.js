@@ -16,20 +16,19 @@ class Gacha {
         this.awardList = [];
         this.canvas.getContext('2d').clearRect(0, 0, this.canvas.width, this.canvas.height);
         for (let i = 0; i < this.ballRes.length; i++) {
-            var ball = document.getElementById(this.ballRes[i]);
-            this.awardList[i] = new Ball(this.canvas, i, ball);
+            var ball = convertImg(this.ballRes[i])
+            //document.getElementById(this.ballRes[i]);
+            this.awardList[i] = new Ball(this.canvas, this.ballRes[i], ball);
             this.awardList[i].init();
         }
     }
 
     startAndGetCacha(ball, callback) {
-        $('.ballfalling').removeClass("start")
-
-        for (let i = 0; i < this.ballRes.length; i++) {
-            document.getElementById(this.ballRes[i]).style.display = "none";
-        }
-
         var that = this;
+        $('.ballfalling').removeClass("start");
+
+        that.reset();
+        
         window.clearInterval(this.timer);
         this.timer = setInterval(function () {
             that.canvas.getContext('2d').clearRect(0, 0, that.canvas.width, that.canvas.height);
@@ -58,21 +57,53 @@ class Gacha {
             ball = this.awardList[i];
             // this.awardList.splice(i, 1);
         }
- 
+
         $('.ballfalling').addClass("start")
         ball.img.removeAttribute("style")
     }
+
+    reset() {
+        for (let i = 0; i < this.ballRes.length; i++) {
+            var img = convertImg(this.ballRes[i])
+            img.style.display = "none";
+            this.awardList[i].init();
+        }
+
+    }
 }
 
-function Ball(canvas, index, img) {
+
+function convertImg(ball) {
+    switch (ball) {
+        case "other1":
+            return document.getElementById("ball1")
+        case "other2":
+            return document.getElementById("ball2")
+        case "other3":
+            return document.getElementById("ball3")
+        case "other4":
+            return document.getElementById("ball4")
+        case "other5":
+            return document.getElementById("ball5")
+        case "money":
+            return document.getElementById("ball8")
+        case "coupon":
+            return document.getElementById("ball6")
+        case "gift":
+            return document.getElementById("ball7")
+    }
+}
+
+
+function Ball(canvas, type, img) {
     this.canvas = canvas;
     this.ctx = canvas.getContext('2d');
     this.img = img;
     this.r = this.img.width;
     this.x = this.rand(canvas.width - this.r);
-    this.y = this.rand(canvas.height / 2 - this.r);
-    this.y = this.y + canvas.height / 2
-    this.type = index;
+    this.y = this.rand(canvas.height - this.r);
+    // this.y = this.y + canvas.height / 2
+    this.type = type;
 
     do {
         this.speedX = this.rand(20) - 10;
@@ -94,8 +125,6 @@ Ball.prototype = {
     run: function () {
         this.x += this.speedX;
         this.y += this.speedY;
-
-
         if (this.x > this.canvas.width - this.r) {
             this.speedX = -this.speedX;
             this.x = this.canvas.width - this.r;
